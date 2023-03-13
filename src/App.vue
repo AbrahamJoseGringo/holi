@@ -1,9 +1,17 @@
 <script setup>
+import { ref } from 'vue';
+
     const nome = 'Abraham'
     const idade = 17
+    const contador = ref(0)
 
     function inverter(texto) {
         return texto.split('').reverse().join('')
+    }
+
+    function inverterMaiusculo(texto) {
+        const invertido = inverter(texto)
+        return invertido.toUpperCase()
     }
 
     function saudacao() {
@@ -20,10 +28,23 @@
         <p>Para completar 50 anos faltam: {{ 50 - idade }}  anos</p>
         <p>O nome tem {{ nome.length }}  caracteres</p>
         <p>O nome invertido é: {{ inverter(nome) }} </p>
+        <p>O nome invertido em maiusculas é: {{ inverterMaiusculo(nome) }} </p>
         <hr />
         <p> Exemplo de saudação usando função</p>
         <p> {{ saudacao() }}  </p>
     </div>
+    <div class="info">
+        contador: {{ contador }}
+        <button @click="contador++">+</button>
+        <button @click="contador--">-</button>
+        <div v-if="contador > 10">O contador é maoir que 10</div>
+        <div v-else-if="contador < 10">O contador é menor que 10</div>
+        <div v-else>O contador é 10</div>
+        <hr />
+        <div v-if="contador % 2 === 0">É par</div>
+        <div v-else>É impar</div>
+    </div>
+    
 </template>
 
 <style scoped>
@@ -32,6 +53,7 @@
   padding: 20px 30px;
   color: rgb(183, 210, 219);
   border-radius: 10px;
+  margin: 0 20px;
 }
 
 h1 {
