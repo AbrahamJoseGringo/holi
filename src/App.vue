@@ -4,7 +4,12 @@ import { ref } from 'vue';
     const nome = 'Abraham'
     const idade = 17
     const contador = ref(0)
-
+    function stop (){
+        if (contador === "-"){
+            contador = 0
+        }
+    }
+    
     function inverter(texto) {
         return texto.split('').reverse().join('')
     }
@@ -43,6 +48,7 @@ import { ref } from 'vue';
         <hr />
         <div v-if="contador % 2 === 0">É par</div>
         <div v-else>É impar</div>
+        
     </div>
     
 </template>
